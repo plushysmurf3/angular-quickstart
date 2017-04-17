@@ -2,6 +2,7 @@
 var gulp = require("gulp");
 var del = require("del");
 var sourcemaps = require('gulp-sourcemaps');
+var exec = require('child_process').exec;
 
 /**
  * Remove build directory.
@@ -22,8 +23,8 @@ gulp.task("app", ['index'], function(){
         .pipe(gulp.dest("build/app"));
 });
 /* get the index file to the root of the build */
-gulp.task("index", function(){
-    return gulp.src(["src/index.html", "src/main.js", "src/systemjs.config.js", "src/systemjs-angular-loader.js"])
+gulp.task("index", ["systemjs", "environments"], function(){
+    return gulp.src(["src/index.html", "src/main.js"])
         .pipe(gulp.dest("build"));
 });
 /* copy node server to build folder */
@@ -42,6 +43,11 @@ gulp.task("assets", function(){
 gulp.task("systemjs", function(){
     return gulp.src(["src/systemjs.config.js", "src/systemjs-angular-loader.js"])
         .pipe(gulp.dest("build"));
+});
+/* Copying environments */
+gulp.task("environments", function(){
+    return gulp.src(["src/environments/*.js"])
+        .pipe(gulp.dest("build/environments"));
 });
 /**
  * Copy all required libraries into build directory.
@@ -66,6 +72,16 @@ gulp.task("libs", function () {
         '@angular/router/bundles/router.umd.js'
     ], { cwd: "node_modules/**" }) /* Glob required here. */
         .pipe(gulp.dest("build/node_modules"));
+});
+/**
+ * Run npm start
+ */
+gulp.task('npm-start', function (callback) {
+    exec('npm start', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        callback(err);
+    });
 });
 /**
  * Build the project.

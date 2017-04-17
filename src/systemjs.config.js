@@ -12,6 +12,7 @@
     map: {
       // our app is within the app folder
       'app': 'app',
+      'environments': 'environments',
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -36,6 +37,9 @@
             loader: 'systemjs-angular-loader.js'
           }
         }
+      },
+      environments: {
+        defaultExtension: 'js'
       },
       rxjs: {
         main: "Rx.js",

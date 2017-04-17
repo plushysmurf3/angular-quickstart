@@ -52,6 +52,7 @@
     "@types/jasmine": "2.5.36",
     "@types/node": "^6.0.46",
     "canonical-path": "0.0.2",
+    "child_process": "^1.0.2",
     "concurrently": "^3.2.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",

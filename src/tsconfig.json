@@ -10,7 +10,7 @@
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
     "removeComments": false,
-    "watch": true
+    "watch": false
   },
   "exclude": [
     "node_modules"
