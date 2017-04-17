@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "system",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [ "es2015", "dom" ],
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
-  }
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "removeComments": false,
+    "watch": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
